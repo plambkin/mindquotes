@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [QuoteController::class, 'all']);
 
-Route::get('/', [QuoteController::class, 'show']);
+
+Route::get('/collect', [QuoteController::class, 'show']);
 
 
 require __DIR__ . '/auth.php';

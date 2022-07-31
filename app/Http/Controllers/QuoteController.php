@@ -21,7 +21,33 @@ class QuoteController extends Controller
 
         }
 
-
         return view('index');
+    }
+
+
+    public function all()
+    {
+        return view('index');
+
+    }
+
+
+    public function getQuote()
+    {
+
+        // Get a Random number from 1 to size of Quotes table
+
+        $number = rand(1, DB::table('quotes')->get()->count());
+
+        $quote = DB::table('quotes')
+            ->where('id','=',$number)->first();
+
+        return response()->json(['quote' => $quote->content,'author' => $quote->author], 200);
+
+    }
+
+    public function getQuoteByCategory(string $category)
+    {
+        echo "in the getQuote By Category Now";
     }
 }
